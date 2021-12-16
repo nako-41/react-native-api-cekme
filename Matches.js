@@ -21,7 +21,7 @@ export const Matches = () => {
 
             .then((response) => response.json())
             .then((result) => {
-            setSelectedYear(selectedYear);
+            setSelectedYear(selectedYear); 
             setData(result.data);
             setTotalMatches(result.data.length);
             });
@@ -63,6 +63,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 30,
         alignSelf: 'center',
-        color: 'red'
+        color: 'blue'
     }
 })

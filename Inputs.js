@@ -13,6 +13,8 @@ export default function Inputs() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
 
 
     const handleEmail = (text) => {
@@ -23,8 +25,16 @@ export default function Inputs() {
         setPassword(text);
     };
 
-    const login = (email, pass) => {
-        alert("email: " + email+" " + "password : " + pass);
+    const handleName = (text) => {
+        setName(text);
+    }
+
+    const handlelastName = (text) =>{
+        setLastName(text);
+    }
+
+    const login = (email, pass,name,lastName) => {
+        alert("email: " + email+" - " + "password : "  + pass +  " - " + " Name "  + name + " - " + " Soyadı " + lastName);
     };
 
 
@@ -32,6 +42,24 @@ export default function Inputs() {
 
         <View style={styles.container}>
 
+
+              <TextInput
+                style={styles.input}
+                underlineColorAndroid="transparent"
+                placeholder="Name"
+                placeholderTextColor="nane"
+                onChangeText={handleName}
+             />
+
+             <TextInput
+                style={styles.input}
+                underlineColorAndroid="transparent"
+                placeholder="lastName"
+                placeholderTextColor="nane"
+                onChangeText={handlelastName}
+             />
+
+         
             <TextInput
                 style={styles.input}
                 underlineColorAndroid="transparent"
@@ -47,16 +75,22 @@ export default function Inputs() {
                 placeholderTextColor="#9a73ef"
                 onChangeText={handlePassword}
             />
-
-
+            
+    
             <TouchableOpacity
                 style={styles.submitButton}
-                onPress={() => login(email, password)}
+                onPress={() => login(email, password,name)}
             >
                 <Text style={styles.submitButtonText}>SUBMİT</Text>
 
             </TouchableOpacity>
 
+            <TouchableOpacity
+                style={styles.resetButton}
+                onPress={() => login(email, password,name)}
+            >
+                <Text style={styles.resetButtonText}>RESET</Text>
+            </TouchableOpacity>
 
         </View>
     );
@@ -70,13 +104,20 @@ const styles = StyleSheet.create({
     },
     input: {
         margin: 15,
-        height: 40,
+        height: 30,
         borderColor: "#7a42f4",
         borderWidth: 1,
-        width: "50%",
+        width: "20%",
     },
     submitButton : {
         backgroundColor: "#7a42f4",
+        padding: 10,
+        margin: 15,
+        height: 40,
+        textAlign: "center"
+    },
+    resetButton : {
+        backgroundColor: "#008000",
         padding: 10,
         margin: 15,
         height: 40,
